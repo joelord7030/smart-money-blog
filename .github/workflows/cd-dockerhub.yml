@@ -1,7 +1,4 @@
-## CD to dockerhub
-
-
-
+# CD DEPLOY TO DOCKER HUB
 name: CD to Docker Hub
 
 on:
@@ -25,8 +22,8 @@ jobs:
       - uses: docker/setup-buildx-action@v2
       - uses: docker/login-action@v2
         with:
-          username: ${{ joelord1 }}
-          password: ${{ Adesunloye2003$ }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - uses: docker/build-push-action@v4
         with:
           context: .
