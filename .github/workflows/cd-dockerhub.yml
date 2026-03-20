@@ -9,8 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm test
+      
+      - name: Install dependencies
+        # This tells GitHub to enter your folder before running npm
+        run: npm install
+        working-directory: ./smart-money-blog 
+
+      - name: Run tests
+        run: npm test
+        working-directory: ./smart-money-blog
 
   docker:
     needs: build
@@ -24,6 +31,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - uses: docker/build-push-action@v4
         with:
-          context: .
+          # This tells Docker to look inside your folder for the Dockerfile
+          context: ./smart-money-blog
           push: true
           tags: joelord1/smart-money-blog:latest
