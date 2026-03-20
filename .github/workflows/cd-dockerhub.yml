@@ -1,10 +1,8 @@
-# CD DEPLOY TO DOCKER HUB
-name: CD to Docker Hub
+name: Docker Build and Push
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   build:
