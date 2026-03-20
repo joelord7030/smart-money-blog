@@ -1,0 +1,35 @@
+# =========================
+# BASE IMAGE
+# =========================
+FROM node:18
+
+# =========================
+# WORK DIRECTORY
+# =========================
+WORKDIR /app
+
+# =========================
+# COPY PACKAGE FILES
+# =========================
+COPY package*.json ./
+
+# =========================
+# INSTALL DEPENDENCIES
+# =========================
+RUN npm install
+
+# =========================
+# COPY SOURCE CODE
+# =========================
+COPY . .
+
+# =========================
+# EXPOSE BACKEND PORT
+# (you must define this in server.js, usually 5000)
+# =========================
+EXPOSE 5000
+
+# =========================
+# START SERVER
+# =========================
+CMD ["npm", "start"]
