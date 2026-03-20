@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./smart-money-blog
+        # This tells GitHub to look inside your backend folder
+        working-directory: ./backend
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
@@ -32,6 +33,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./smart-money-blog
+          # This tells Docker the Dockerfile is inside the backend folder
+          context: ./backend
           push: true
           tags: joelord1/smart-money-blog:latest
